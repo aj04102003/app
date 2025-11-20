@@ -594,12 +594,11 @@ function App() {
               </div>
               <div>
                 <Label htmlFor="assigned">Assigned To (Optional)</Label>
-                <Select value={taskForm.assigned_to} onValueChange={(value) => setTaskForm({ ...taskForm, assigned_to: value })}>
+                <Select value={taskForm.assigned_to || undefined} onValueChange={(value) => setTaskForm({ ...taskForm, assigned_to: value })}>
                   <SelectTrigger data-testid="task-assigned-select">
-                    <SelectValue placeholder="Select user" />
+                    <SelectValue placeholder="Unassigned" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Unassigned</SelectItem>
                     {users.map(user => (
                       <SelectItem key={user.id} value={user.id}>{user.name}</SelectItem>
                     ))}
